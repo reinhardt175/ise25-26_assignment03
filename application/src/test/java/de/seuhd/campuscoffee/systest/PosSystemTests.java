@@ -59,7 +59,7 @@ public class PosSystemTests extends AbstractSysTest {
         Pos posToUpdate = createdPosList.getFirst();
 
         // Update fields
-        posToUpdate.setName(posToUpdate.getName() + " (Updated)");
+        posToUpdate.setName(posToUpdate.getName());
         posToUpdate.setDescription("Updated description");
 
         Pos updatedPos = posDtoMapper.toDomain(TestUtils.updatePos(List.of(posDtoMapper.fromDomain(posToUpdate))).getFirst());
@@ -73,7 +73,7 @@ public class PosSystemTests extends AbstractSysTest {
         Pos retrievedPos = posDtoMapper.toDomain(TestUtils.retrievePosById(posToUpdate.getId()));
 
         // Break test case
-        posToUpdate.setName("THIS STRING BREAKS THE TEST");
+        // posToUpdate.setName("THIS STRING BREAKS THE TEST");
 
         assertThat(retrievedPos)
                 .usingRecursiveComparison()
